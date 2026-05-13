@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgf7dcghrpcfh"]
+
+[ext_resource type="Script" uid="uid://6i67of48btfl" path="res://Multiplayer_Creator.gd" id="1_fietw"]
+
+[node name="Multiplayer_Creator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fietw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 172.0
+offset_bottom = 118.0
+theme_override_constants/separation = 4
+
+[node name="Server" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Create Server"
+
+[node name="Client" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Create Client"
+
+[connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]
+[connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_client_pressed"]

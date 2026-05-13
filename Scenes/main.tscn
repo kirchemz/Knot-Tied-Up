@@ -1,0 +1,59 @@
+[gd_scene format=4 uid="uid://c6un5phi75b5l"]
+
+[ext_resource type="Script" uid="uid://bxdh1umrf5gew" path="res://Scenes/main.gd" id="1_21xkr"]
+[ext_resource type="Texture2D" uid="uid://dlbmldijk725b" path="res://Sprites/Grass/Grass_Tileset.png" id="1_jjgbg"]
+[ext_resource type="Texture2D" uid="uid://e452sg7gady5" path="res://Sprites/Platform/Platform_Tileset.png" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://dfrov1a1k1x34" path="res://Scenes/player.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bgf7dcghrpcfh" path="res://Scenes/multiplayer_creator.tscn" id="4_jjvhh"]
+[ext_resource type="Script" uid="uid://bpx5683ojl1kw" path="res://Scenes/multiplayer_spawner.gd" id="5_kry3j"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8gbba"]
+texture = ExtResource("1_jjgbg")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_jjvhh"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_8gbba")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kry3j"]
+texture = ExtResource("2_bo1nx")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.1204147, 8, 2.2335625, 8, -2.233562, -8, -2.3381624)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.7985878, -8, -2.0631065, 8, -2.063107, 8, 1.9484901)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 2.0631065, -8, -2.030511, 8, -2.2335615, 8, 2.0057983)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.973299, 8, 2.0379972, 8, -2.0703464, -8, -2.0631065)
+
+[sub_resource type="TileSet" id="TileSet_21xkr"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_kry3j")
+
+[node name="Main" type="Node2D" unique_id=530654241]
+script = ExtResource("1_21xkr")
+
+[node name="Grass_TileMapLayer" type="TileMapLayer" parent="." unique_id=214145311]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAABMAAAAAAAAAAAABABMAAAABAAAAAAACABMAAAACAAAAAAADABMAAAADAAAAAAAEABMAAAAAAAAAAAAFABMAAAABAAAAAAAGABMAAAACAAAAAAAHABMAAAADAAAAAAAIABMAAAAAAAAAAAAJABMAAAABAAAAAAAKABMAAAACAAAAAAALABMAAAADAAAAAAAMABMAAAAAAAAAAAANABMAAAABAAAAAAAOABMAAAACAAAAAAAPABMAAAADAAAAAAAQABMAAAAAAAAAAAARABMAAAABAAAAAAASABMAAAACAAAAAAATABMAAAADAAAAAAAUABMAAAAAAAAAAAAVABMAAAABAAAAAAAWABMAAAACAAAAAAAXABMAAAADAAAAAAAYABMAAAAAAAAAAAAZABMAAAABAAAAAAAaABMAAAACAAAAAAAbABMAAAADAAAAAAAcABMAAAAAAAAAAAAdABMAAAABAAAAAAAeABMAAAACAAAAAAAfABMAAAADAAAAAAAgABMAAAAAAAAAAAAhABMAAAABAAAAAAAiABMAAAACAAAAAAAjABMAAAADAAAAAAA=")
+tile_set = SubResource("TileSet_jjvhh")
+
+[node name="Platform_TileMapLayer" type="TileMapLayer" parent="." unique_id=1930212633]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAALABAAAAAAAAEAAAAMABAAAAABAAEAAAANABAAAAACAAEAAAARAA4AAAAAAAEAAAASAA4AAAABAAEAAAATAA4AAAACAAEAAAAXAA0AAAAAAAAAAAAbAAsAAAAAAAEAAAAcAAsAAAABAAEAAAAdAAsAAAACAAEAAAATAAkAAAACAAEAAAARAAkAAAAAAAEAAAASAAkAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_21xkr")
+
+[node name="Multiplayer_Creator" parent="." unique_id=547818401 instance=ExtResource("4_jjvhh")]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=758448574]
+_spawnable_scenes = PackedStringArray("uid://dfrov1a1k1x34")
+spawn_path = NodePath("..")
+script = ExtResource("5_kry3j")
+network_player = ExtResource("3_8gbba")

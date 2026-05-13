@@ -12,10 +12,28 @@ grow_vertical = 2
 script = ExtResource("1_fietw")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 172.0
-offset_bottom = 118.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Knot Tied Up - Multiplayer"
+alignment = 1
+
+[node name="Separator1" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Server" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -23,7 +41,28 @@ text = "Create Server"
 
 [node name="Client" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "Create Client"
+text = "Connect as Client"
+
+[node name="IPLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Server IP/Hostname:"
+
+[node name="IPInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "localhost or 192.168.1.100"
+
+[node name="PortLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Port:"
+
+[node name="PortInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "33367"
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Select an option above"
+alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]
 [connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_client_pressed"]

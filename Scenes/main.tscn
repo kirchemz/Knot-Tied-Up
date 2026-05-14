@@ -51,6 +51,10 @@ tile_map_data = PackedByteArray("AAALABAAAAAAAAEAAAAMABAAAAABAAEAAAANABAAAAACAAE
 tile_set = SubResource("TileSet_21xkr")
 
 [node name="Multiplayer_Creator" parent="." unique_id=547818401 instance=ExtResource("4_jjvhh")]
+offset_left = 127.0
+offset_top = 134.0
+offset_right = 127.0
+offset_bottom = 134.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=758448574]
 _spawnable_scenes = PackedStringArray("uid://dfrov1a1k1x34")

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgf7dcghrpcfh"]
+[gd_scene format=3 uid="uid://bgf7dcghrpcfh"]
 
 [ext_resource type="Script" uid="uid://6i67of48btfl" path="res://Multiplayer_Creator.gd" id="1_fietw"]
 
-[node name="Multiplayer_Creator" type="Control"]
+[node name="Multiplayer_Creator" type="Control" unique_id=1047750582]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fietw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=594323920]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,43 +26,41 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 4
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=744030031]
 layout_mode = 2
 text = "Knot Tied Up - Multiplayer"
-alignment = 1
 
-[node name="Separator1" type="Control" parent="VBoxContainer"]
+[node name="Separator1" type="Control" parent="VBoxContainer" unique_id=1524670661]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Server" type="Button" parent="VBoxContainer"]
+[node name="Server" type="Button" parent="VBoxContainer" unique_id=1240810366]
 layout_mode = 2
 text = "Create Server"
 
-[node name="Client" type="Button" parent="VBoxContainer"]
+[node name="Client" type="Button" parent="VBoxContainer" unique_id=451233342]
 layout_mode = 2
 text = "Connect as Client"
 
-[node name="IPLabel" type="Label" parent="VBoxContainer"]
+[node name="IPLabel" type="Label" parent="VBoxContainer" unique_id=1868007461]
 layout_mode = 2
 text = "Server IP/Hostname:"
 
-[node name="IPInput" type="LineEdit" parent="VBoxContainer"]
+[node name="IPInput" type="LineEdit" parent="VBoxContainer" unique_id=844395686]
 layout_mode = 2
 placeholder_text = "localhost or 192.168.1.100"
 
-[node name="PortLabel" type="Label" parent="VBoxContainer"]
+[node name="PortLabel" type="Label" parent="VBoxContainer" unique_id=824521944]
 layout_mode = 2
 text = "Port:"
 
-[node name="PortInput" type="LineEdit" parent="VBoxContainer"]
+[node name="PortInput" type="LineEdit" parent="VBoxContainer" unique_id=1964972439]
 layout_mode = 2
 placeholder_text = "33367"
 
-[node name="StatusLabel" type="Label" parent="VBoxContainer"]
+[node name="StatusLabel" type="Label" parent="VBoxContainer" unique_id=892185374]
 layout_mode = 2
 text = "Select an option above"
-alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Server" to="." method="_on_server_pressed"]
 [connection signal="pressed" from="VBoxContainer/Client" to="." method="_on_client_pressed"]

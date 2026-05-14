@@ -1,35 +1,8 @@
 extends Node
 
 var peer : ENetMultiplayerPeer
-var server_ip : String = ""
-var server_port : int = 33367
-
-# Signal for when server is started
-signal server_started(ip: String, port: int)
-
-func _ready() -> void:
-	# Try to get local IP address on startup
-	get_local_ip()
-
-func get_local_ip() -> String:
-	# Returns the local machine IP address
-	# This is a simple approach - in production you might want more robust detection
-	var hostname = OS.get_environment("HOSTNAME")
-	if hostname.is_empty():
-		hostname = "localhost"
-	server_ip = hostname
-	return server_ip
-
-func set_server_ip(ip: String) -> void:
-	# Allow manual setting of server IP
-	server_ip = ip
-	print("Server IP set to: %s" % server_ip)
-
-func get_server_ip() -> String:
-	return server_ip
 
 func start_server(port: int = 33367) -> void:
-	server_port = port
 	peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(port, 2)
 	
@@ -38,16 +11,7 @@ func start_server(port: int = 33367) -> void:
 		return
 	
 	multiplayer.multiplayer_peer = peer
-	
-	# If server_ip wasn't set, try to get it
-	if server_ip.is_empty():
-		get_local_ip()
-	
 	print("Server started on port %d" % port)
-	print("Server IP: %s" % server_ip)
-	
-	# Emit signal with server info
-	server_started.emit(server_ip, port)
 
 func start_client(ip_address: String, port: int = 33367) -> void:
 	peer = ENetMultiplayerPeer.new()

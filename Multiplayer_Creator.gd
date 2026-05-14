@@ -14,9 +14,6 @@ func _ready() -> void:
 	server_button.pressed.connect(_on_server_pressed)
 	client_button.pressed.connect(_on_client_pressed)
 	
-	# Connect to server started signal to display server info
-	HighLevelMultiplayerHandler.server_started.connect(_on_server_started)
-	
 	# Set default port value
 	port_input.text = str(DEFAULT_PORT)
 	
@@ -44,10 +41,6 @@ func _on_server_pressed() -> void:
 	ip_input.visible = false
 	port_input.visible = false
 	HighLevelMultiplayerHandler.start_server(port)
-
-func _on_server_started(ip: String, port: int) -> void:
-	# Display server info to user
-	status_label.text = "Server running at %s:%d\nShare this IP with clients!" % [ip, port]
 
 func _on_client_pressed() -> void:
 	# Toggle visibility of input fields
